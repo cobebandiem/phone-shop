@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter , Route, Switch } from 'react-router-dom';
 import { routesPage } from './routes';
 
 function App() {
@@ -15,13 +15,13 @@ function App() {
     return rs;
   }
   return (
-    <Router>
+    <HashRouter>
       <div className="App">
         <Switch>
           {showPages(routesPage)}
         </Switch>
       </div>
-    </Router>
+    </HashRouter>
   );
 }
 
