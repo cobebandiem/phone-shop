@@ -1,6 +1,7 @@
 {
   "name": "phone-shop",
   "version": "0.1.0",
+  "proxy":"https://api-phone-shop.herokuapp.com",
   "homepage":"https://cobebandiem.github.io/phone-shop",
   "private": true,
   "dependencies": {
