@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import HeaderContainer from './../containers/HeaderContainer';
 import Footer from './../components/Footer';
 import Navbar from './../components/Navbar';
 import {Route, Switch } from 'react-router-dom';
 import {routes} from './../routes';
+import axios from 'axios';
 
 function HomePage(props) {
     let showContent = (routes) => {
@@ -17,6 +18,11 @@ function HomePage(props) {
         }
         return rs;
     }
+    useEffect(()=>{
+        axios.get('https://api-phone-shop.herokuapp.com')
+        .then(res=>console.log(res))
+        .catch(err=>console.log(err))
+    },[])
     return (
         <React.Fragment>
             <HeaderContainer />
