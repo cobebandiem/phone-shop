@@ -19,8 +19,8 @@ function HomePage(props) {
         return rs;
     }
     useEffect(()=>{
-        axios.get('https://api-phone-shop.herokuapp.com')
-        .then(res=>console.log(res))
+        axios.get('https://6050d6b9534609001767098f.mockapi.io/call-api/products')
+        .then(res=>console.log(res.data))
         .catch(err=>console.log(err))
     },[])
     return (
