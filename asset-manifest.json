@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/phone-shop/static/css/main.926274b1.chunk.css",
-    "main.js": "/phone-shop/static/js/main.b0d41e4a.chunk.js",
-    "main.js.map": "/phone-shop/static/js/main.b0d41e4a.chunk.js.map",
+    "main.js": "/phone-shop/static/js/main.ce524747.chunk.js",
+    "main.js.map": "/phone-shop/static/js/main.ce524747.chunk.js.map",
     "runtime-main.js": "/phone-shop/static/js/runtime-main.2df9e6ea.js",
     "runtime-main.js.map": "/phone-shop/static/js/runtime-main.2df9e6ea.js.map",
     "static/js/2.538e16a2.chunk.js": "/phone-shop/static/js/2.538e16a2.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.2df9e6ea.js",
     "static/js/2.538e16a2.chunk.js",
     "static/css/main.926274b1.chunk.css",
-    "static/js/main.b0d41e4a.chunk.js"
+    "static/js/main.ce524747.chunk.js"
   ]
 }
