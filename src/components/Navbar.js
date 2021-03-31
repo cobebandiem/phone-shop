@@ -1,4 +1,4 @@
-function Navbar() {
+function Navbar(props) {
     return (
         <ul className="shop__nav__menu">
             <li>
@@ -9,24 +9,7 @@ function Navbar() {
                 <div className="catalog">
                     <h4>HÃNG SẢN XUẤT</h4>
                     <ul className="list__product">
-                        <li>
-                            <a href="">Iphone</a>
-                        </li>
-                        <li>
-                            <a href="">OPPO</a>
-                        </li>
-                        <li>
-                            <a href="">Vsmart</a>
-                        </li>
-                        <li>
-                            <a href="">Samsung</a>
-                        </li>
-                        <li>
-                            <a href="">Nokia</a>
-                        </li>
-                        <li>
-                            <a href="">Realme</a>
-                        </li>
+                        {props.children}
                     </ul>
                 </div>
             </li>

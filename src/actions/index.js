@@ -33,19 +33,18 @@ export const actDeleteProduct=(id)=>{
 }
 
 export const actUpdateProductRequest=(body)=>{
-    console.log(body);
     return dispatch=>{
         if(body.id){
             return callApi(`products/${body.id}`,'PUT',body).then(res=>{
-                dispatch(actUpdateProduct(body));
-            })
-        }else{
-            return callApi(`products`,'POST',body).then(res=>{
                 let bodyFake={
                     ...body,
                     id:parseInt(body.id)
                 }
-                dispatch(actAddProduct(bodyFake));
+                dispatch(actUpdateProduct(bodyFake));
+            })
+        }else{
+            return callApi(`products`,'POST',body).then(res=>{
+                dispatch(actAddProduct(body));
             })
         }
         
@@ -73,6 +72,7 @@ export const actSearchProductRequest=(txtSearch)=>{
                 txtSearch,
                 products:res.data
             }
+            console.log(data)
             dispatch(actSearchProduct(data));
         })
     }
@@ -141,5 +141,20 @@ export const actEditingProduct=(product)=>{
     return {
         type:types.EDITING_PRODUCT,
         product
+    }
+}
+
+
+
+export const actFilterBrand=(brand)=>{
+    return {
+        type:types.EDITING_BRAND,
+        brand
+    }
+}
+export const actFilterSearch=(search)=>{
+    return {
+        type:types.EDITING_SEARCH,
+        search
     }
 }

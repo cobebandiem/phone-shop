@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function ProductItem(props) {
     return (
         <div className="col c-2-5">
-            <Link to={`/${props.product.id}`} className="home-product-item">
+            <Link to={`dien-thoai/${props.product.id}`} className="home-product-item">
                 <div className="home-product-item__img" style={{
                     backgroundImage:"url('https://cdn.cellphones.com.vn/media/catalog/product/cache/7/small_image/220x175/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone-12-pro-max_1__7.jpg')",
                 }}>

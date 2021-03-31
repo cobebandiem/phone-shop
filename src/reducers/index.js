@@ -4,12 +4,14 @@ import searchProducts from './search';
 import productDetail from './productDetail';
 import carts from './carts';
 import editingProduct from './editingProduct';
+import filter from './filter';
 
 const myReducer=combineReducers({
     products,
     searchProducts,
     productDetail,
     carts,
-    editingProduct
+    editingProduct,
+    filter
 });
 export default myReducer;

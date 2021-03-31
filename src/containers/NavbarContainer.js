@@ -1,16 +1,19 @@
 import React from 'react';
-import Navbar from ''
+import Navbar from './../components/Navbar';
 import {connect} from 'react-redux';
-import { Link } from 'react-router-dom';
-
+import * as actions from './../actions/index';
 
 function NavbarContainer(props) {
     let showMenuLink=(products)=>{
         let output=null;
-        if(products.length>0){
-            output=products.map((product,index)=>{
-                return (<li>
-                            <Link to="">Iphone</Link>
+        let brands=products.map((product)=>{return product.brand});
+        brands=brands.filter((brand,index)=>{
+            return brands.indexOf(brand)===index;
+        })
+        if(brands){
+            output=brands.map((brand,index)=>{
+                return (<li key={index}>
+                            <span onClick={()=>{props.onFilterBrand(brand)}} span>{brand}</span>
                         </li>);
             })
         }
@@ -18,7 +21,7 @@ function NavbarContainer(props) {
     }
     return (
         <Navbar>
-
+            {showMenuLink(props.products)}
         </Navbar>
     );
 }
@@ -29,9 +32,11 @@ const mapStateToProps=(state)=>{
 }
 const mapDispatchToProps=(dispatch,props)=>{
     return{
-
+        onFilterBrand:(brand)=>{
+            dispatch(actions.actFilterBrand(brand))
+        }
     }
 }
 
 
-export default connect()(NavbarContainer);
+export default connect(mapStateToProps,mapDispatchToProps)(NavbarContainer);

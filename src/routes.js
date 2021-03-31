@@ -23,9 +23,14 @@ export const routes=[
         main:()=><CartContainer/>
     },
     {
-        path:'/:slug',
+        path:'/dien-thoai/:slug',
         exact:false,
         main:({match})=><ProductDetailContainer match={match}/>
+    },
+    {
+        path:'/:slug',
+        exact:false,
+        main:({match})=><ProductListContainer match={match}/>
     },
     {
         path:'',

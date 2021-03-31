@@ -14,7 +14,7 @@ function Admin(props) {
             Validator.isRequired('#images'),
             Validator.isRequired('#price'),
             Validator.isRequired('#sale')
-        ],
+        ], 
         messageElement: '.form-message',
         onSubmit: function (data) {
             let product = {
@@ -23,6 +23,16 @@ function Admin(props) {
                 details: data.details.split('\n'),
                 images: data.images.split('\n')
             };
+            let resetProduct={name: '',
+            brand: '',
+            description: '',
+            details: '',
+            color: '',
+            images: '',
+            price: '',
+            sale: '',
+            id: ''}
+            props.onResetEditingProduct(resetProduct);
             props.onUpdateProduct(product);
             // console.log(data);
             // console.log(product);

@@ -8,7 +8,9 @@ function ProductDetail(props){
         const showImgActive=document.querySelector('.showImg-active');
         const active=document.querySelector('.slider_1');
         //console.log(active);
-        active.classList.add('listImg--active');
+        if(active){
+            active.classList.add('listImg--active');
+        }
         //console.log('showImgActive:',showImgActive.src);
         //mouseover vào phần không phải la img thi event trong addEventListener sẽ khong tim thay duong dan đênt ảnh
         imgHovers.forEach((img)=>{
@@ -37,7 +39,6 @@ function ProductDetail(props){
             setCount(count+1);
         }
     }
-    let {id,name,type,image,price,quantity}=props.product;
     let onBuyNow=()=>{
         onAddCart();
         setCount(0);
@@ -45,20 +46,57 @@ function ProductDetail(props){
     if(count===0){
         return <Redirect to="/cart"/>
     }
+    let showDetails=(details)=>{
+        let output=null;
+        if(details){
+            output=details.map((item,index)=>{
+                let arrays=item.split(":");
+                return (<div key={index} className="product__details--item">
+                            <span className="product__details--item--title">{arrays[0]}</span>
+                            <span className="product__details--trademark">{arrays[1]}</span>
+                        </div>);
+            })
+        }
+        return output;
+    }
+    let showDescription=(description)=>{
+        let output=null;
+        if(description){
+            output=description.map((item,index)=>{
+                if(item.toLowerCase().indexOf('.png')!==-1||item.toLowerCase().indexOf('.jpg')!==-1||item.toLowerCase().indexOf('.jpeg')!==-1){
+                    return (<img src={item} alt="" key={index}/>)
+                }
+                return (<p key={index}>{item}</p>);
+            })
+        }
+        return output;
+    }
+    let showImages=(images)=>{
+        let output=null;
+        if(images){
+            output=images.map((item,index)=>{
+               return(<li key={index} className="imgHover slide slider_1">
+                        <img src={`https://hoanghamobile.com/i/preview/Uploads/2020/11/06/${item}`} />
+                    </li>);
+            })
+        }
+        return output;
+    }
+    const {id,name,brand,images,price,quantity,sale,details,description}=props.product;
     return (
         <div className="app__content">
             <div className="grid wide">
                 <div className="product--breadcrumb">
-                    <span>PhoneShop</span><i className="product--breadcrumb-icon fas fa-angle-right"></i>
-                    <span>Phone</span><i className="product--breadcrumb-icon fas fa-angle-right"></i>
-                    <span>{type}</span><i className="product--breadcrumb-icon fas fa-angle-right"></i>
+                    <span>PhoneShop</span><i className="product--breadcrumb-icon fas fa-chevron-right"></i>
+                    <span>Phone</span><i className="product--breadcrumb-icon fas fa-chevron-right"></i>
+                    <span>{brand}</span><i className="product--breadcrumb-icon fas fa-chevron-right"></i>
                     <span>{name}</span>
                 </div>
                 <div className="app__product">
                     <div className="product__info row">
                         <div className="product__img col-15 l-4p ">
                             <div className="showImg">
-                                <img className="showImg-active" src="https://cf.shopee.vn/file/53a8c2d55e6fc96adbef75c5905afe29" />
+                                <img className="showImg-active" src={`https://hoanghamobile.com/i/preview/Uploads/2020/11/06/${images[0]}`} />
                             </div>
                             <div className="slide-wrap">
                                 <input type="radio" name="slider" id="slide11" defaultChecked hidden />
@@ -66,30 +104,7 @@ function ProductDetail(props){
                                 <input type="radio" name="slider" id="slide33" hidden />
                                 <input type="radio" name="slider" id="slide44" hidden />
                                 <ul id="slides" className="listImg">
-                                    <li className="imgHover slide slider_1">
-                                        <img src="https://cf.shopee.vn/file/53a8c2d55e6fc96adbef75c5905afe29" />
-                                    </li>
-                                    <li className="imgHover slide slider_1">
-                                        <img src="https://cf.shopee.vn/file/2fe82cfee6ca7b46fd29b8188d07b779" />
-                                    </li>
-                                    <li className="imgHover slide slider_1">
-                                        <img src="https://cf.shopee.vn/file/9e2cd71b97a701d3bfa683b232fc95b4" />
-                                    </li>
-                                    <li className="imgHover slide slider_1">
-                                        <img src="https://cf.shopee.vn/file/b7867c02a154c070dc768e7973f124a7" />
-                                    </li>
-                                    <li className="imgHover slide slider_1">
-                                        <img src="https://cf.shopee.vn/file/53a8c2d55e6fc96adbef75c5905afe29" />
-                                    </li>
-                                    <li className="imgHover slide slider_1">
-                                        <img src="https://cf.shopee.vn/file/2fe82cfee6ca7b46fd29b8188d07b779" />
-                                    </li>
-                                    <li className="imgHover slide slider_1">
-                                        <img src="https://cf.shopee.vn/file/9e2cd71b97a701d3bfa683b232fc95b4" />
-                                    </li>
-                                    <li className="imgHover slide slider_1">
-                                        <img src="https://cf.shopee.vn/file/b7867c02a154c070dc768e7973f124a7" />
-                                    </li>
+                                    {showImages(images)}
                                 </ul>
                                 <div id="controls">
                                     <label htmlFor="slide11"></label>
@@ -136,7 +151,7 @@ function ProductDetail(props){
                                 <li className="product__price--current">
                                 </li>
                                 <li className="product__price--item">
-                                    <span className="product__price--discount">% GIẢM</span>
+                                    <span className="product__price--discount">{sale}% GIẢM</span>
                                 </li>
                             </ul>
                             <div className="product__amount">
@@ -180,24 +195,13 @@ function ProductDetail(props){
                         CHI TIẾT SẢN PHẨM
                         </div>
                     <div className="product__details--list">
-                        <div className="product__details--item">
-                            <span className="product__details--item--title">Thương hiệu</span>
-                            <span className="product__details--trademark">dsadasd</span>
-                        </div>
-                        <div className="product__details--item">
-                            <span className="product__details--item--title">Kho hàng</span>
-                            <span>123</span>
-                        </div>
-                        <div className="product__details--item">
-                            <span className="product__details--item--title">Gửi từ</span>
-                            <span>số 99, Man Thiện, Quận 9, HCM</span>
-                        </div>
+                        {showDetails(details)}
                     </div>
                     <div className="product__details--title">
                         MÔ TẢ SẢN PHẨM
                         </div>
                     <div className="product__details--description">
-
+                        {showDescription(description)}
                     </div>
                 </div>
             </div>

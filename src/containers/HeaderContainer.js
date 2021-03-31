@@ -27,8 +27,11 @@ function HeaderContainer(props) {
         }
         return output;
     }
+    let onClickSearch=(search)=>{
+        props.onClickSearch(search);
+    }
     return (
-        <Header onSearch={onSearch} carts={totalCarts(props.carts)}>
+        <Header onSearch={onSearch} onClickSearch={onClickSearch} carts={totalCarts(props.carts)}>
             <SearchList>
                 {showListSearch(props.searchProducts)}
             </SearchList>
@@ -45,6 +48,9 @@ const mapDispatchToProps=(dispatch, props)=>{
     return{
         onSearch:(txtSearch)=>{
             dispatch(actions.actSearchProductRequest(txtSearch))
+        },
+        onClickSearch:(search)=>{
+            dispatch(actions.actFilterSearch(search))
         }
     }
 }

@@ -60,11 +60,13 @@ function AdminContainer(props) {
         let productsFake=props.products.filter((product)=>{
             return product['name'].toLowerCase().indexOf(txtSearch.toLowerCase())!==-1;
         });
-        console.log(productsFake)
         setProducts(productsFake);
     }
+    let onResetEditingProduct=(product)=>{
+        props.onEditingProduct(product);
+    }
     return (
-        <Admin onUpdateProduct={onUpdateProduct} onSearch={onSearch} product={props.editingProduct}>
+        <Admin onResetEditingProduct={onResetEditingProduct} onUpdateProduct={onUpdateProduct} onSearch={onSearch} product={props.editingProduct}>
             {showListProduct(products)}
         </Admin>
     );

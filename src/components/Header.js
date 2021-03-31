@@ -1,9 +1,17 @@
+import { useState } from 'react';
 import {Link} from 'react-router-dom';
 function Header(props) {
+    const [search,setSearch]=useState('');
     let onChange=(event)=>{
         var target=event.target;
         var value=target.value;
+        setSearch(value);
         props.onSearch(value);
+    }
+    let onClickSearch=()=>{
+        if(search){
+            props.onClickSearch(search)
+        }
     }
     return (
         <header>
@@ -23,7 +31,7 @@ function Header(props) {
                     </div>
                     <div className="header__search">
                         <input type="text" name="txtSearch" onChange={onChange} placeholder="Hôm nay bạn cần tìm gì?"/>
-                        <button className="header__search--icon" htmlFor="checkbox-search">
+                        <button onClick={onClickSearch} className="header__search--icon" htmlFor="checkbox-search">
                             <i className="fas fa-search"></i>
                         </button>
                         {props.children}
