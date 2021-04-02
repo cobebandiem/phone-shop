@@ -7,7 +7,7 @@ function SearchList(props) {
         <li className="header__search__item">
             <Link to={`/${id}`}>
                 <div className="item__img">
-                    <img src={`https://hoanghamobile.com/i/preview/Uploads/2020/11/06/${images[0]}`} alt="" />
+                    <img src={`https://hoanghamobile.com/i/preview/Uploads/${images[0]}`} alt="" />
                 </div>
                 <div className="item__content">
                     <h4>{name}</h4>

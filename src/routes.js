@@ -2,7 +2,7 @@ import ProductListContainer from './containers/ProductListContainer';
 import NotFound from './components/NotFound';
 import ProductDetailContainer from './containers/ProductDetailContainer';
 import CartContainer from './containers/CartContainer';
-import Login from './components/Login';
+import LoginContainer from './containers/LoginContainer';
 import AdminPage from './pages/AdminPage';
 import HomePage from './pages/HomePage';
 
@@ -15,7 +15,7 @@ export const routes=[
     {
         path:'/login',
         exact:false,
-        main:()=><Login/>
+        main:()=><LoginContainer/>
     },
     {
         path:'/cart',

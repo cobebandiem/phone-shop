@@ -1,6 +1,9 @@
+import './css/grid.css';
 import './App.css';
 import { HashRouter , Route, Switch } from 'react-router-dom';
 import { routesPage } from './routes';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   let showPages = (routesPage) => {
@@ -17,6 +20,7 @@ function App() {
   return (
     <HashRouter>
       <div className="App">
+        <ToastContainer/>
         <Switch>
           {showPages(routesPage)}
         </Switch>

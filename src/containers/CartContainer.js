@@ -23,7 +23,7 @@ function CartContainer(props) {
         let output=0;
         if(carts.length>0){
             carts.map((cart,index)=>{
-                output+=cart.sl*cart.price; 
+                output+=cart.sl*(cart.price-(Math.floor(cart.price*cart.sale/100))); 
             })
         }
         return output;

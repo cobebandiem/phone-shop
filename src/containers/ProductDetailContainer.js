@@ -6,7 +6,6 @@ import * as actions from './../actions/index';
 function ProductDetailContainer(props) {
     useEffect(()=>{
         let {slug}=props.match.params;
-        console.log(slug)
         props.getProductDetail(slug);
     },[]);
     let onAddCart=(product,sl)=>{

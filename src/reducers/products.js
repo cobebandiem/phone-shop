@@ -11,10 +11,8 @@ let findIndex=(id,products)=>{
 var myReducer=(state=initialState,action)=>{
     switch(action.type){
         case types.ADD_PRODUCT:{
-            let id=state[state.length-1].id + 1;
             let product={
                 ...action.body,
-                id
             }
             state.push(product);
             return [...state];

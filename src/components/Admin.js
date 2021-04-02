@@ -13,7 +13,8 @@ function Admin(props) {
             Validator.isRequired('#color'),
             Validator.isRequired('#images'),
             Validator.isRequired('#price'),
-            Validator.isRequired('#sale')
+            Validator.isRequired('#sale'),
+            Validator.isRequired('#quantity')
         ], 
         messageElement: '.form-message',
         onSubmit: function (data) {
@@ -31,6 +32,7 @@ function Admin(props) {
             images: '',
             price: '',
             sale: '',
+            quantity:'',
             id: ''}
             props.onResetEditingProduct(resetProduct);
             props.onUpdateProduct(product);
@@ -50,6 +52,7 @@ function Admin(props) {
         images: '',
         price: '',
         sale: '',
+        quantity:'',
         id: ''
     });
     let onChange = (e) => {
@@ -74,6 +77,7 @@ function Admin(props) {
             images: '',
             price: '',
             sale: '',
+            quantity:'',
             id: ''
         });
     }
@@ -81,7 +85,8 @@ function Admin(props) {
         props.onSearch(e.target.value);
     }
     return (
-        <div className="admin">
+        <div className="admin">           
+            <button onClick={props.onLogout} type="button" style={{color:'#fff'}} className="btn btn-danger text-right">Logout</button>
             <div className="text-center">
                 <h1>Quản Lý Sản Phẩm</h1>
                 <hr />
@@ -140,6 +145,11 @@ function Admin(props) {
                                 <div className="form-group">
                                     <label>Sale off :</label>
                                     <input onChange={onChange} value={product.sale} id="sale" name="sale" type="number" className="form-control" />
+                                    <span style={{ color: "red" }} className="form-message"></span>
+                                </div>
+                                <div className="form-group">
+                                    <label>Quantity :</label>
+                                    <input onChange={onChange} value={product.quantity} id="quantity" name="quantity" type="number" className="form-control" />
                                     <span style={{ color: "red" }} className="form-message"></span>
                                 </div>
                                 <br />
@@ -206,6 +216,7 @@ function Admin(props) {
                                         <th style={{ width: '10%' }} className="text-center">Image</th>
                                         <th style={{ width: '10%' }} className="text-center">Price</th>
                                         <th style={{ width: '5%' }} className="text-center">Sale off</th>
+                                        <th style={{ width: '5%' }} className="text-center">Quantity</th>
                                         <th style={{ width: '15%' }} className="text-center"></th>
                                     </tr>
                                 </thead>

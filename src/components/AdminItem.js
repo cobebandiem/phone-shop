@@ -1,7 +1,7 @@
 import React from 'react';
 
 function AdminItem(props) {
-    const {id,name,brand,description,details,color,images,price,sale}=props.product;
+    const {id,name,brand,description,details,color,images,price,sale,quantity}=props.product;
     let showDescription=(description)=>{
         let output=null;
         if(description.length>0){
@@ -34,6 +34,7 @@ function AdminItem(props) {
             </td>
             <td style={{width: '10%'}}>{price}</td>
             <td style={{width: '5%'}}>{sale}%</td>
+            <td style={{width: '5%'}}>{quantity}</td>
             <td style={{width: '15%'}}>
                 <button onClick={()=>props.onEditingProduct(props.product)} type="button" className="btn btn-warning">
                     <span className="fa fa-pencil mr-5"></span>&nbsp;Sửa

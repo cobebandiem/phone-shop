@@ -5,6 +5,7 @@ import productDetail from './productDetail';
 import carts from './carts';
 import editingProduct from './editingProduct';
 import filter from './filter';
+import token from './token';
 
 const myReducer=combineReducers({
     products,
@@ -12,6 +13,7 @@ const myReducer=combineReducers({
     productDetail,
     carts,
     editingProduct,
-    filter
+    filter,
+    token
 });
 export default myReducer;

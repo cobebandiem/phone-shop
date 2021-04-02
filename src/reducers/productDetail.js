@@ -6,7 +6,7 @@ var initialState = {id: 1,
     details: [],
     color: "",
     price: 0,
-    images: ["apple-iphone-12-mini.png",],
+    images: [""],
     sale: 0
     };
 

@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import callApi from '../utils/apiCaller';
 import * as types from './../constants/ActionTypes';
 
@@ -38,13 +39,13 @@ export const actUpdateProductRequest=(body)=>{
             return callApi(`products/${body.id}`,'PUT',body).then(res=>{
                 let bodyFake={
                     ...body,
-                    id:parseInt(body.id)
+                    id:body.id
                 }
                 dispatch(actUpdateProduct(bodyFake));
             })
         }else{
             return callApi(`products`,'POST',body).then(res=>{
-                dispatch(actAddProduct(body));
+                dispatch(actAddProduct(res.data));
             })
         }
         
@@ -158,3 +159,48 @@ export const actFilterSearch=(search)=>{
         search
     }
 }
+
+
+
+export const actLoginRequest=(body)=>{
+    return dispatch=>{
+        console.log(body)
+        if(body.username==='admin'&&body.password==='admin'){
+            toast.success('Đăng nhập thành công!');
+            dispatch(actLoginSuccess('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOjEsImlhdCI6MTYxNzIwNTIyNH0.keF-LCPeKZbIcwBtUw20lM0NYAW1-2yMfM-oEH2E17Q&oq=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOjEsImlhdCI6MTYxNzIwNTIyNH0.keF-LCPeKZbIcwBtUw20lM0NYAW1-2yMfM-oEH2E17Q&aqs=chrome..69i57.456j0j7&sourceid=chrome&ie=UTF-8'));
+        }else{
+            toast.error('Kiểm tra lại username or password của bạn!');
+        }
+        // return callApi(`login`,'POST',body).then(res=>{
+        //     if(res.data.token){
+        //         toast.success('Đăng nhập thành công!');
+        //         dispatch(actLoginSuccess(res.data.token));
+        //     }else{
+        //         toast.error('Kiểm tra lại sdt hoặc mật khẩu của bạn!');
+        //     }
+        // })
+    }
+}
+export const actLoginSuccess=(token)=>{
+    return {
+        type:types.LOGIN_SUCCESS,
+        token
+    }
+}
+export const actLogoutSuccess=()=>{
+    toast.success('Đăng xuất thành công!');
+    return {
+        type:types.LOGOUT_SUCCESS
+    }
+}
+
+// export const actLoginRequest=(token)=>{
+//     return dispatch=>{
+//         return callApi(`token`,'GET',token).then(res=>{
+//             if(res.data){
+//             }else{
+//                 dispatch(act(res.data.token));
+//             }
+//         })
+//     }
+// }

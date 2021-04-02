@@ -13,7 +13,7 @@ function NavbarContainer(props) {
         if(brands){
             output=brands.map((brand,index)=>{
                 return (<li key={index}>
-                            <span onClick={()=>{props.onFilterBrand(brand)}} span>{brand}</span>
+                            <span onClick={()=>{props.onFilterBrand(brand)}}>{brand}</span>
                         </li>);
             })
         }

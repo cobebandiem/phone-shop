@@ -1,3 +1,5 @@
+import './../css/header.css';
+import './../css/grid.css';
 import { useState } from 'react';
 import {Link} from 'react-router-dom';
 function Header(props) {
@@ -18,13 +20,14 @@ function Header(props) {
             <div className="header__top">
                 <div className="container">
                     <ul className="menu-list">
-                        <li><a>Số 97 Man Thiện Quận 9 Thành Phó Hồ Chí Minh</a></li>
+                        <li className="mb-0"><a>Số 97 Man Thiện Quận 9 Thành Phó Hồ Chí Minh</a></li>
+                        <li className=""><Link to='/login'>Đăng nhập</Link></li>
                     </ul>
                 </div>
             </div>
             <div className="header__main">
                 <div className="container">
-                    <div className="header__logo">
+                    <div className="header__logo mb-0">
                         <a href="">
                             <img src="https://www.thephoneshopmidlands.com/uploads/u6EFvIyP/737x0_1094x0/The-Phone-Shop-Midlands-logo-v4.png" alt="logo" />
                         </a>
@@ -36,11 +39,11 @@ function Header(props) {
                         </button>
                         {props.children}
                     </div>
-                    <div className="header__contact">
+                    <div className="header__contact mb-0">
                         <span className="">Liên hệ trực tiếp</span>
                         <span><i className="fas fa-phone"></i>  0944748742</span>
                     </div>
-                    <div className="header__cart">
+                    <div className="header__cart mb-0">
                         <Link to="/cart">
                             <i className="header__cart-icon fas fa-shopping-cart"></i>
                         </Link>

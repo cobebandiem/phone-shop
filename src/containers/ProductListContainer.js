@@ -1,3 +1,4 @@
+import './../css/home/home.css';
 import React, { useEffect, useState } from 'react';
 import {connect} from 'react-redux';
 import ProductList from './../components/ProductList';
@@ -22,7 +23,7 @@ function ProductListContainer(props){
     },[]);
     const [filter,setFilter]=useState({search:'',brand:''});
     const [title,setTitle]=useState('Điện thoại nổi bật');
-    const [products,setProducts]=useState([])
+    const [products,setProducts]=useState([]);
     useEffect(()=>{
         setProducts(props.products);
     },[props.products]);

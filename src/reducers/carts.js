@@ -1,4 +1,5 @@
 import * as types from '../constants/ActionTypes';
+import './../css/cart/responsive.css';
 var initialState=JSON.parse(localStorage.getItem('carts'))?JSON.parse(localStorage.getItem('carts')):[];
 
 let findIndex=(id,carts)=>{

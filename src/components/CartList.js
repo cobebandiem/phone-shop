@@ -1,4 +1,5 @@
 import React from 'react';
+import {formatVnd} from './../utils/formatMoney';
 
 function CartList(props) {
     return (
@@ -27,7 +28,7 @@ function CartList(props) {
                 <div className="cart__footer">
                     <div className="cart__total--products">
                         <span>Tổng tiền:</span>
-                        <span className="cart__total--vnd">₫{props.total}</span>
+                        <span className="cart__total--vnd">{formatVnd(props.total)}</span>
                     </div>
                     <div className="btn buy-now">
                         Đặt Hàng

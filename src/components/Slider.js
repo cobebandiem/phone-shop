@@ -10,12 +10,12 @@ function Slider() {
                     <div className="inner">
                         <div className="slide slide_1">
                             <a href="">
-                                <img src="https://hoanghamobile.com/i/home/Uploads/2021/03/20/s21-83.png" alt="" />
+                                <img src="https://hoanghamobile.com/i/home/Uploads/2021/03/19/nokia-54-web.png" alt="" />  
                             </a>
                         </div>
                         <div className="slide slide_2">
                             <a href="">
-                                <img src="https://hoanghamobile.com/i/home/Uploads/2021/03/19/nokia-54-web.png" alt="" />
+                            <img src="https://hoanghamobile.com/i/home/Uploads/2021/03/20/s21-83.png" alt="" />
                             </a>
                         </div>
                         <div className="slide slide_3">
@@ -31,7 +31,7 @@ function Slider() {
                     </div>
                 </div>
             </div>
-            <ul className="grid1 row" id="bullets">
+            <ul className="grid1 row mb-0" id="bullets">
                 <label className="col c-3" htmlFor="slide1">
                     <span>Mua Repo5 5G tặng quà khủng</span>
                 </label>

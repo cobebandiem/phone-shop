@@ -1,21 +1,9 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-
 function Login(props) {
     const [login,setLogin]=useState({username:'',password:''});
     let onHandleSubmit=(e)=>{
         e.preventDefault();
-        let {username, password}=login;
-        axios.post('/login',{
-            username,
-            password
-        })
-        .then(function (response) {
-            console.log(response.data);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+        props.onLogin(login);
     }
     let onChange=(e)=>{
         let target=e.target;
